@@ -15,7 +15,7 @@ window.APP_CONFIG = {
   //   5. Paste it below, replacing this placeholder string.
   //
   // While this is empty, chat.html will show a helpful "not configured" message.
-  n8nChatWebhookUrl: '',
+  n8nChatWebhookUrl: 'https://community-prod-n8n.pattern.com/webhook/2cb35146-7a0b-44db-ba9d-c7b0a858e6d7/chat',
 
   // Where "Tasks in Asana" opens. Replace with your actual Asana project URL.
   asanaProjectUrl: 'https://app.asana.com/',
