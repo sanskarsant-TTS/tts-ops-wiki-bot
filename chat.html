@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Chat · TikTok Shop Ops</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E💬%3C/text%3E%3C/svg%3E" />
+    <style>
+      body { display: flex; flex-direction: column; min-height: 100vh; }
+      #chat-container { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+      .chat-empty {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        text-align: center;
+        color: var(--muted);
+      }
+      .chat-empty h2 { color: var(--fg); margin-bottom: 8px; }
+      .chat-empty code {
+        background: #eef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 90%;
+      }
+      :root {
+        --chat--color-primary: #6366f1;
+        --chat--color-primary-shade-50: #4f46e5;
+        --chat--color-primary-shade-100: #4338ca;
+        --chat--color-secondary: #10b981;
+        --chat--color-white: #ffffff;
+        --chat--color-light: #f3f4f6;
+        --chat--color-medium: #d1d5db;
+        --chat--color-dark: #1f2937;
+        --chat--spacing: 1rem;
+        --chat--border-radius: 0.5rem;
+        --chat--transition-duration: 0.15s;
+        --chat--window--width: 100%;
+        --chat--window--height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__left">
+        <span class="app-header__icon">💬</span>
+        <div>
+          <h1 class="app-header__title">AI Chat Assistant</h1>
+          <p class="app-header__subtitle">TikTok Shop Ops · powered by Claude via n8n</p>
+        </div>
+      </div>
+      <nav class="app-header__nav">
+        <a href="index.html" class="app-header__link">Hub</a>
+        <a href="chat.html" class="app-header__link app-header__link--active">AI Chat</a>
+      </nav>
+    </header>
+
+    <main id="chat-container">
+      <div class="chat-empty" id="chat-empty">
+        <h2>Chat not configured</h2>
+        <p>
+          Edit <code>config.js</code> and set <code>n8nChatWebhookUrl</code> to your
+          n8n Chat Trigger's <b>production</b> webhook URL (activate the
+          <i>TTS Ops Bot - Chat</i> workflow, then copy the URL from the Chat Trigger node).
+        </p>
+      </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      const url = window.APP_CONFIG?.n8nChatWebhookUrl;
+      if (url && url.startsWith('http')) {
+        document.getElementById('chat-empty')?.remove();
+        createChat({
+          webhookUrl: url,
+          mode: 'fullscreen',
+          target: '#chat-container',
+          showWelcomeScreen: true,
+          initialMessages: [
+            "Hi! I'm Sanskar's AI assistant for TikTok Shop operations. Ask me about categories, attributes, required documents, onboarding, or any of the SOPs.",
+          ],
+          i18n: {
+            en: {
+              title: 'TikTok Shop Ops Assistant',
+              subtitle: 'Answering on behalf of Sanskar',
+              footer: '',
+              getStarted: 'Start chatting',
+              inputPlaceholder: 'Ask a question about TikTok Shop ops…',
+              closeButtonTooltip: 'Close',
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
