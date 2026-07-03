@@ -3,9 +3,46 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>TikTok Shop Ops Hub</title>
+    <title>TikTok Shop Ops · AI Assistant</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E🛍️%3C/text%3E%3C/svg%3E" />
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E💬%3C/text%3E%3C/svg%3E" />
+    <style>
+      body { display: flex; flex-direction: column; min-height: 100vh; }
+      #chat-container { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+      .chat-empty {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        text-align: center;
+        color: var(--muted);
+      }
+      .chat-empty h2 { color: var(--fg); margin-bottom: 8px; }
+      .chat-empty code {
+        background: #eef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 90%;
+      }
+      :root {
+        --chat--color-primary: #6366f1;
+        --chat--color-primary-shade-50: #4f46e5;
+        --chat--color-primary-shade-100: #4338ca;
+        --chat--color-secondary: #10b981;
+        --chat--color-white: #ffffff;
+        --chat--color-light: #f3f4f6;
+        --chat--color-medium: #d1d5db;
+        --chat--color-dark: #1f2937;
+        --chat--spacing: 1rem;
+        --chat--border-radius: 0.5rem;
+        --chat--transition-duration: 0.15s;
+        --chat--window--width: 100%;
+        --chat--window--height: 100%;
+      }
+    </style>
   </head>
   <body>
     <header class="app-header">
@@ -13,81 +50,53 @@
         <span class="app-header__icon">🛍️</span>
         <div>
           <h1 class="app-header__title">TikTok Shop Operations</h1>
-          <p class="app-header__subtitle">Hub · Sanskar Sant</p>
+          <p class="app-header__subtitle">AI Assistant · Sanskar Sant</p>
         </div>
       </div>
       <nav class="app-header__nav">
-        <a href="index.html" class="app-header__link app-header__link--active">Hub</a>
-        <a href="chat.html" class="app-header__link">AI Chat</a>
+        <a href="index.html" class="app-header__link app-header__link--active">AI Chat</a>
+        <a href="hub.html" class="app-header__link">Dashboards</a>
       </nav>
     </header>
 
-    <main class="hub">
-      <section class="hub__hero">
-        <h2 class="hub__title">Your ops command center</h2>
-        <p class="hub__lede">
-          Chat with the AI assistant, track work in Asana, and jump into any of your existing dashboards from one place.
+    <main id="chat-container">
+      <div class="chat-empty" id="chat-empty">
+        <h2>Chat not configured</h2>
+        <p>
+          Edit <code>config.js</code> and set <code>n8nChatWebhookUrl</code> to your
+          n8n Chat Trigger's <b>production</b> webhook URL (activate the
+          <i>TTS Ops Bot - Chat</i> workflow, then copy the URL from the Chat Trigger node).
         </p>
-      </section>
-
-      <section class="hub__grid">
-        <a class="tile tile--primary" href="chat.html">
-          <div class="tile__icon">💬</div>
-          <div class="tile__body">
-            <h3 class="tile__title">AI Chat Assistant</h3>
-            <p class="tile__desc">
-              Ask anything about TikTok Shop ops — categories, required attributes, onboarding steps, or any of your SOPs.
-              Powered by Claude via n8n, grounded in your Google Drive knowledge base.
-            </p>
-            <span class="tile__cta">Open chat →</span>
-          </div>
-        </a>
-
-        <a class="tile" id="asana-tile" href="https://app.asana.com/" target="_blank" rel="noreferrer">
-          <div class="tile__icon">✅</div>
-          <div class="tile__body">
-            <h3 class="tile__title">Tasks in Asana</h3>
-            <p class="tile__desc">Open your live task board.</p>
-            <span class="tile__cta">Open Asana →</span>
-          </div>
-        </a>
-
-        <a class="tile" href="https://sanskarsant-tts.github.io/tts-ops-dashboard/" target="_blank" rel="noreferrer">
-          <div class="tile__icon">📊</div>
-          <div class="tile__body">
-            <h3 class="tile__title">TTS Ops Dashboard</h3>
-            <p class="tile__desc">Your existing Asana-powered ops dashboard on GitHub Pages.</p>
-            <span class="tile__cta">Open dashboard →</span>
-          </div>
-        </a>
-
-        <a class="tile" href="https://drive.google.com/drive/folders/1kxAigwIOKtE3A8LPNMU0ghuT9Qv30Kx1" target="_blank" rel="noreferrer">
-          <div class="tile__icon">📁</div>
-          <div class="tile__body">
-            <h3 class="tile__title">Onboarding Package Generator</h3>
-            <p class="tile__desc">The source-of-truth Drive folder the bot syncs from.</p>
-            <span class="tile__cta">Open folder →</span>
-          </div>
-        </a>
-
-        <div class="tile tile--info">
-          <div class="tile__icon">ℹ️</div>
-          <div class="tile__body">
-            <h3 class="tile__title">Add more dashboards</h3>
-            <p class="tile__desc">
-              Edit <code>config.js</code> in this repo to add more links here.
-              Everything runs on GitHub Pages — no external services besides n8n.
-            </p>
-          </div>
-        </div>
-      </section>
+      </div>
     </main>
 
-    <footer class="app-footer">
-      <span>Runs on GitHub Pages + n8n · No external accounts required</span>
-    </footer>
-
     <script src="config.js"></script>
-    <script src="main.js"></script>
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      const url = window.APP_CONFIG?.n8nChatWebhookUrl;
+      if (url && url.startsWith('http')) {
+        document.getElementById('chat-empty')?.remove();
+        createChat({
+          webhookUrl: url,
+          mode: 'fullscreen',
+          target: '#chat-container',
+          showWelcomeScreen: true,
+          initialMessages: [
+            "Hi! I'm your TikTok Shop Ops assistant. Ask me anything about SOPs, categories, required documents, or onboarding. I can also look up Asana tasks, query the ops dashboard, and take actions like creating tasks for you.",
+          ],
+          i18n: {
+            en: {
+              title: 'TikTok Shop Ops',
+              subtitle: 'Your AI ops assistant · answers on behalf of Sanskar',
+              footer: '',
+              getStarted: 'Start chatting',
+              inputPlaceholder: 'Ask about SOPs, tasks, dashboards, anything…',
+              closeButtonTooltip: 'Close',
+            },
+          },
+        });
+      }
+    </script>
   </body>
 </html>
