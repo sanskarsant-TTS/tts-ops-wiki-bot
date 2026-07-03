@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboards · TikTok Shop Ops</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E🛍️%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header__left">
+        <span class="app-header__icon">🛍️</span>
+        <div>
+          <h1 class="app-header__title">TikTok Shop Operations</h1>
+          <p class="app-header__subtitle">Dashboards · Sanskar Sant</p>
+        </div>
+      </div>
+      <nav class="app-header__nav">
+        <a href="index.html" class="app-header__link">AI Chat</a>
+        <a href="hub.html" class="app-header__link app-header__link--active">Dashboards</a>
+      </nav>
+    </header>
+
+    <main class="hub">
+      <section class="hub__hero">
+        <h2 class="hub__title">Your ops command center</h2>
+        <p class="hub__lede">
+          Chat with the AI assistant, track work in Asana, and jump into any of your existing dashboards from one place.
+        </p>
+      </section>
+
+      <section class="hub__grid">
+        <a class="tile tile--primary" href="index.html">
+          <div class="tile__icon">💬</div>
+          <div class="tile__body">
+            <h3 class="tile__title">Back to AI Chat</h3>
+            <p class="tile__desc">
+              Ask anything about TikTok Shop ops, Asana tasks, listing data, or SOPs &mdash; all in one chat.
+            </p>
+            <span class="tile__cta">Open chat →</span>
+          </div>
+        </a>
+
+        <a class="tile" id="asana-tile" href="https://app.asana.com/" target="_blank" rel="noreferrer">
+          <div class="tile__icon">✅</div>
+          <div class="tile__body">
+            <h3 class="tile__title">Tasks in Asana</h3>
+            <p class="tile__desc">Open your live task board.</p>
+            <span class="tile__cta">Open Asana →</span>
+          </div>
+        </a>
+
+        <a class="tile" href="https://sanskarsant-tts.github.io/tts-ops-dashboard/" target="_blank" rel="noreferrer">
+          <div class="tile__icon">📊</div>
+          <div class="tile__body">
+            <h3 class="tile__title">TTS Ops Dashboard</h3>
+            <p class="tile__desc">Your existing Asana-powered ops dashboard on GitHub Pages.</p>
+            <span class="tile__cta">Open dashboard →</span>
+          </div>
+        </a>
+
+        <a class="tile" href="https://drive.google.com/drive/folders/1kxAigwIOKtE3A8LPNMU0ghuT9Qv30Kx1" target="_blank" rel="noreferrer">
+          <div class="tile__icon">📁</div>
+          <div class="tile__body">
+            <h3 class="tile__title">Onboarding Package Generator</h3>
+            <p class="tile__desc">The source-of-truth Drive folder the bot syncs from.</p>
+            <span class="tile__cta">Open folder →</span>
+          </div>
+        </a>
+
+        <div class="tile tile--info">
+          <div class="tile__icon">ℹ️</div>
+          <div class="tile__body">
+            <h3 class="tile__title">Add more dashboards</h3>
+            <p class="tile__desc">
+              Edit <code>config.js</code> in this repo to add more links here.
+              Everything runs on GitHub Pages — no external services besides n8n.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Runs on GitHub Pages + n8n · No external accounts required</span>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
